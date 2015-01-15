@@ -1,0 +1,57 @@
+<%
+  var ads = [
+    {
+      href: 'https://alinode.aliyun.com/?ref=cnode',
+      label: 'alinode',
+      img_src: '//dn-cnode.qbox.me/Fn4D6BhOTz1IswvmzeZ1q7QW1ls_',
+    },
+    {
+      href: 'http://www.jiguang.cn/?from=cnode01',
+      label: 'jpush',
+      img_src: '//dn-cnode.qbox.me/Fl5n4GoTupMAS3Ksf-5rcB2iSM2D',
+    },
+    {
+      href: 'http://www.apmcon.cn/index.html?utm_source=cnode',
+      label: 'tingyun',
+      img_src: '//dn-cnode.qbox.me/Fp018ZshHaKRPk7XIyKOSFo7tCBZ',
+    },
+    {
+      href: 'https://cnodejs.org/topic/55a77e2f93ce02cd25985916',
+      label: 'guangyin',
+      img_src: '//dn-cnode.qbox.me/FphIGf6l1QKaEzhnlLHvw49GIv_P',
+    },
+    {
+      href: 'http://www.ucloud.cn/site/seo.html?utm_source=zanzhu&utm_campaign=cnodejs&utm_medium=display&utm_content=shengji&ytag=cnodejs_display',
+      label: 'ucloud-banner',
+      img_src: '//dn-cnode.qbox.me/Fk7rRGVgB0XWgKjlpJs72VJty9Eu',
+    },
+    {
+      href: 'https://www.wilddog.com/?utm_source=cnode&utm_medium=banner&utm_content=homepageright&utm_campaign=suzhoucodingcamp',
+      label: 'wilddog',
+      img_src: '//cdn.wilddog.com/images/ads/cnode/cnode-540x130-1.jpg',
+    },
+    {
+      href: 'http://submail.cn/sms?s=cnode',
+      label: 'submail',
+      img_src: '//dn-cnode.qbox.me/FixbBzsaHXlymE1_QRontEhsWR3O',
+    },
+  ];
+
+    var randomNum = (new Date()).getMinutes() % ads.length;
+
+    ads = ads.slice(randomNum).concat(ads.slice(0, randomNum));
+%>
+<div class='panel'>
+  <div class='inner ads'>
+
+    <% ads.forEach(function (adObj, idx) { %>
+      <% if (idx !== 0) { %>
+        <div class="sep10"></div>
+      <% } %>
+      <a href="<%-adObj.href%>" target="_blank" class="banner sponsor_outlink"
+    data-label="<%=adObj.label%>">
+        <img src="<%- staticFile(adObj.img_src) %>">
+      </a>
+    <% }) %>
+  </div>
+</div>
