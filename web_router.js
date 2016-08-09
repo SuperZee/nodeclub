@@ -8,6 +8,14 @@
  * Module dependencies.
  */
 
+
+/**
+ * 总路由
+ * 网站的所有路径匹配的地方
+ * ./controllers/...
+ * ./middlewares/...
+ * express,passport,./config
+ */
 var express = require('express');
 var sign = require('./controllers/sign');
 var site = require('./controllers/site');

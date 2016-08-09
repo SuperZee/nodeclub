@@ -81,9 +81,13 @@ exports.getTopicsByQuery = function (query, opt, callback) {
     }
 
     var proxy = new EventProxy();
+    // 监听持续型异步,topic_ready,次数是topics.length次,满足触发length次
+    // 即执行回调函数
     proxy.after('topic_ready', topics.length, function () {
+      // _.compact作用,创建一个新数组并包含原数组中所有的非假值元素。
+      // 例如 false、null、 0、""、undefined 和 NaN 都是“假值”。
       topics = _.compact(topics); // 删除不合规的 topic
-      return callback(null, topics);
+      return callback(null, topics); // 返回合规的topics
     });
     proxy.fail(callback);
 
@@ -96,7 +100,7 @@ exports.getTopicsByQuery = function (query, opt, callback) {
           topic.author = author;
           topic.reply = reply;
         } else {
-          topics[i] = null;
+          topics[i] = null; // 如果作者已经删除,这取出来的文章赋值为null
         }
         proxy.emit('topic_ready');
       });
